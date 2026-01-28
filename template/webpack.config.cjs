@@ -56,6 +56,8 @@
  * 4: Import Decap files
         Copy the "cms" folder and its files from https://github.com/nickyonge/decap-cms-quickstart/tree/main/src/cms
         and place them into a src/ directory in your project folder
+            Note: By default, the CMS directory here is called "cms", but "admin" is also common naming convention. 
+            If you'd prefer "admin" or something else, just rename the directory, and change CMS_FOLDER below to match.
  * 
  *       Done! Run command "npm start" to get underway
  *       Consider starting by making a src/ directory and index.js inside of it (steps 9/10 in the detailed instructions below)
@@ -90,7 +92,7 @@
         npm install css-loader postcss-loader mini-css-extract-plugin --save-dev
  *          If not doing this step, you can remove CSS / mini plugin references from this file 
  *          Note: We're using mini-css-extract-plugin instead of style-loader to control CSS file output 
- *          Note: Loaders that post-process content, like css-loader, should exclude your src/cms directory, since it gets copied to ./dist
+ *          Note: Loaders that post-process content, like css-loader, should exclude your src/cms or src/admin directory, as it gets copied to ./dist
  * 8: Optionally, import the JQuery and TypeScript libraries, 
         npm install jquery typescript
  *          Note: Omit the --save-dev! These aren't dev-only dependencies.
@@ -162,7 +164,7 @@ const OUTPUT_FOLDER = 'dist';
 const INDEX_FILE = './js/index.js';
 
 /** Name of the folder, in both source and dist output, for the CMS. */
-const CMS_FOLDER = 'cms';
+const CMS_FOLDER = 'cms'; // 'admin' is also a common name 
 
 // #endregion Config
 
