@@ -60,10 +60,11 @@ These steps are detailed in the template file itself, but for the sake of having
 2. Update `SITE_TITLE`, [line 151](https://github.com/nickyonge/decap-cms-quickstart/blob/584ae004f9e131c8c727408a5f6bdb8d0a3469c8/template/webpack.config.cjs#L151), to your desired title
    - If needed, also change the other config properties like `SRC_FOLDER` or `INDEX_FILE`.
 3. If you haven't already, install all other relevant npm packages with these two commands (in addition to the ones installed in [Step 2](#2-install-npm-packages)):
-   - ```
+
+     ```
      npm i webpack webpack-cli webpack-dev-server webpack-remove-empty-scripts css-loader html-webpack-plugin mini-css-extract-plugin postcss-loader --save-dev
      ```
-   - ```
+     ```
      npm i typescript jquery
      ```
 
