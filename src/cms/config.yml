@@ -4,17 +4,17 @@
 local_backend: true
 
 ## LOCAL BACKEND 
-display_url: "../" # up-one-layer URLs 
+display_url: "../" # up-one-layer URLs, so that mysite.com/cms returns to mysite.com (or localhost:8080/cms)
 site_url: "../" 
 backend:
   name: git-gateway #see https://decapcms.org/docs/git-gateway-backend/
 
 ## PRODUCTION BACKEND (GITHUB) 
-# display_url: "https://github.com/nickyonge/decap-cms-quickstart" # <----- replace 
-# site_url: "https://github.com/nickyonge/decap-cms-quickstart" # <----- replace 
+# display_url: "https://github.com/nickyonge/decap-cms-quickstart" #   <----- REPLACE URL 
+# site_url: "https://github.com/nickyonge/decap-cms-quickstart" #   <----- REPLACE URL 
 # backend:
 #   name: github
-#   repo: nickyonge/decap-cms-quickstart # <----- replace 
+#   repo: nickyonge/decap-cms-quickstart #   <----- REPLACE URL 
 #   branch: main
 
 # #Note: github requires an auth server, such as: 
@@ -22,18 +22,15 @@ backend:
 # #   auth_endpoint: auth
 # #see: https://decapcms.org/docs/external-oauth-clients/
 
-
-#TODO: Decap config Slug Type, https://decapcms.org/docs/configuration-options/#configuration-file
-
-logo:
-  src: duck.png # <----- replace if desired (but cmon why would you) 
+logo: #   <----- replace or modify as desired 
+  src: icon.png 
   show_in_header: true
 
 media_folder: "content/media"
 public_folder: "/content/media"
 
 # https://decapcms.org/docs/configuration-options/#collections
-collections: # <----- customize as needed 
+collections: #   <----- customize as needed 
   - name: "elements"
     label: "Elements"
     folder: "content/elements"
