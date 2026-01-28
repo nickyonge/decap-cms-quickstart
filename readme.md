@@ -25,6 +25,11 @@ In your project's `src` folder, import the CMS folder and all its files found in
 
 The [cms.zip](cms.zip) file also contains that directory, for quick download.
 
+> [!NOTE]
+> This guide uses `"cms"` as the name for the CMS subfolder, but `"admin"` is also common naming convention. If you'd prefer to use "admin" or something else, simply change the directory name to match.
+> 
+> If you're using the Decap Webpack config template in [Step 3A](#3a-using-this-repos-webpackconfigcjs-template), you'll also need to change `CMS_FOLDER` to match - but worry about that in a couple minutes, when you're there ;)
+
 ### 2) Install npm packages
 
 Install the following npm packages as dev dependencies by running the following terminal commands:
@@ -58,6 +63,7 @@ These steps are detailed in the template file itself, but for the sake of having
 
 1. Ensure the [webpack.config.cjs](template/webpack.config.cjs) file is in your project's root directory
 2. Update `SITE_TITLE`, [line 151](https://github.com/nickyonge/decap-cms-quickstart/blob/584ae004f9e131c8c727408a5f6bdb8d0a3469c8/template/webpack.config.cjs#L151), to your desired title
+   - If you've changed the `"cms"` folder name to something else (such as `"admin"`), update `CMS_FOLDER` to match.
    - If needed, also change the other config properties like `SRC_FOLDER` or `INDEX_FILE`.
 3. If you haven't already, install all other relevant npm packages with these two commands (in addition to the ones installed in [Step 2](#2-install-npm-packages)):
 
