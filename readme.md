@@ -8,15 +8,26 @@ This guide speedruns steps 1 ([installation](https://decapcms.org/docs/install-d
 
 ## Instructions 
 
+There's five steps:
+1. Copy the CMS files into your project
+2. Install the necessary npm packages
+3. Update your `webpack.config.js`
+4. Update your `package.json`
+5. Launch and test!
+
+And, optionally,
+
+6. Customize your icon and CMS appearance
+
 ### 1) Copy CMS files
 
 In your project's `src` folder, import the CMS folder and all its files found in this repo's [src](src).
 
 The [cms.zip](cms.zip) file also contains that directory, for quick download.
 
-### 2) Install NPM packages
+### 2) Install npm packages
 
-Install the following NPM packages as dev dependencies by running the following terminal commands:
+Install the following npm packages as dev dependencies by running the following terminal commands:
 
 1. **CopyWebpackPlugin** - [Package](https://www.npmjs.com/package/copy-webpack-plugin), [repo](https://github.com/webpack/copy-webpack-plugin), [docs](https://webpack.js.org/plugins/copy-webpack-plugin/) \
    Copies source files to output folder, eg from `./src/cms` to `./dist`
@@ -25,13 +36,13 @@ Install the following NPM packages as dev dependencies by running the following 
    ```
 
 2. **npm-run-all2** - [Package](https://www.npmjs.com/package/npm-run-all2), [repo](https://github.com/bcomnes/npm-run-all2) \
-   Allows executing multiple NPM commands at once (see [Step 4](#4-update-packagejson))
+   Allows executing multiple npm commands at once (see [Step 4](#4-update-packagejson))
    ```
    npm i npm-run-all2 --save-dev
    ```
 
 > [!NOTE]
-> If you're starting _really_ fresh and haven't already initialized NPM in this project, execute `npm init -y`
+> If you're starting _really_ fresh and haven't already initialized npm in this project, execute `npm init -y`
 
 ### 3) Update your webpack.config.js
 
@@ -48,7 +59,7 @@ These steps are detailed in the template file itself, but for the sake of having
 1. Ensure the [webpack.config.cjs](template/webpack.config.cjs) file is in your project's root directory
 2. Update `SITE_TITLE`, [line 151](https://github.com/nickyonge/decap-cms-quickstart/blob/584ae004f9e131c8c727408a5f6bdb8d0a3469c8/template/webpack.config.cjs#L151), to your desired title
    - If needed, also change the other config properties like `SRC_FOLDER` or `INDEX_FILE`.
-3. If you haven't already, install all other relevant NPM packages with these two commands (in addition to the ones installed in [Step 2](#2-install-npm-packages)):
+3. If you haven't already, install all other relevant npm packages with these two commands (in addition to the ones installed in [Step 2](#2-install-npm-packages)):
    - ```
      npm i webpack webpack-cli webpack-dev-server webpack-remove-empty-scripts css-loader html-webpack-plugin mini-css-extract-plugin postcss-loader --save-dev
      ```
@@ -123,7 +134,7 @@ This assumes you're using a typical webpack.config.js file, such as the [barebon
    ```
    The `noErrorOnMissing` pattern is [optional](https://webpack.js.org/plugins/copy-webpack-plugin/#noerroronmissing).
 
-### 3) Update package.json
+### 4) Update package.json
 
 This is useful if you want to simply execute `npm start` and have your development CMS enabled, instead of having to execute `npm start` to launch Webpack, and _then_ execute `npx decap-server` to launch your local Decap server.
 
@@ -140,13 +151,13 @@ In your `package.json` file's `scripts`, add the following.
 ```
 Whether or not you're using the Webpack Template, this will replace the `"start"` command. If you _are_ using the template, this will also replace the `"start:dev"` and `"start:prod"` commands. In either case, the `"start:byconfig"` and `"server"` commands are new.
 
-### 4) Launch and test your CMS
+### 5) Launch and test your CMS
 
 Now when you test your site via `npm start` in VS Code, it should also start your local Decap server. When your browser opens to `localhost:8080` (or whatever your local test URL may be), add `/cms` to it and test out your new CMS!
 
 Next up, time to [configure the CMS](https://decapcms.org/docs/configure-decap-cms/) to your specific project. Have fun 💖
 
-### 5) Optional: Customization, config.yml, and index.html
+### 6) Optional: Customization, config.yml, and index.html
 
 #### Icon
 
