@@ -16,21 +16,47 @@ The [cms.zip](cms.zip) file also contains that directory, for quick download.
 
 ### 2) Install NPM packages
 
-Install the following NPM packages as dev dependencies:
+Install the following NPM packages as dev dependencies by running the following terminal commands:
 
 1. **CopyWebpackPlugin** - [Package](https://www.npmjs.com/package/copy-webpack-plugin), [repo](https://github.com/webpack/copy-webpack-plugin), [docs](https://webpack.js.org/plugins/copy-webpack-plugin/) \
-   Copies source files to output folder, eg from `./src/cms` to `./dist` \
-   `npm i copy-webpack-plugin --save-dev`
+   Copies source files to output folder, eg from `./src/cms` to `./dist`
+   ```
+   npm i copy-webpack-plugin --save-dev
+   ```
 
 2. **npm-run-all2** - [Package](https://www.npmjs.com/package/npm-run-all2), [repo](https://github.com/bcomnes/npm-run-all2) \
-   Allows executing multiple NPM commands at once (see [Step 4](#4-update-packagejson)) \
-   `npm i npm-run-all2 --save-dev`
+   Allows executing multiple NPM commands at once (see [Step 4](#4-update-packagejson))
+   ```
+   npm i npm-run-all2 --save-dev
+   ```
+
+> [!NOTE]
+> If you're starting _really_ fresh and haven't already initialized NPM in this project, execute `npm init -y`
 
 ### 3) Update your webpack.config.js
 
-If your webpack.config is based off of the [Webpack Template](https://github.com/nickyonge/webpack-template) (or [webpack.config.cjs Gist](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39)), follow [Step 3A](#3a-using-the-webpack-template). If not, follow [Step 3B](#3b-modifying-webpackconfig-directly).
+The template [webpack.config.cjs](template/webpack.config.cjs) file is already prepared for use. If you're using that template (fastest method), follow [Step 3A](#3a-using-this-repos-webpackconfigcjs-template).
 
-#### 3A) Using the Webpack Template 
+If your webpack.config is based off of the [Webpack Template](https://github.com/nickyonge/webpack-template) (or [webpack.config.cjs Gist](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39)), follow [Step 3B](#3b-using-the-webpacktemplate-repo-config). 
+
+If you've written your own webpack.config file or gotten it from elsewhere, follow [Step 3C](#3c-modifying-webpackconfig-directly).
+
+#### 3a) Using this repo's webpack.config.cjs template
+
+These steps are detailed in the template file itself, but for the sake of having it all together:
+
+1. Ensure the [webpack.config.cjs](template/webpack.config.cjs) file is in your project's root directory
+2. Update `SITE_TITLE`, [line 151](https://github.com/nickyonge/decap-cms-quickstart/blob/584ae004f9e131c8c727408a5f6bdb8d0a3469c8/template/webpack.config.cjs#L151), to your desired title
+   - If needed, also change the other config properties like `SRC_FOLDER` or `INDEX_FILE`.
+3. If you haven't already, install all other relevant NPM packages with these two commands (in addition to the ones installed in [Step 2](#2-install-npm-packages)):
+   - ```
+     npm i webpack webpack-cli webpack-dev-server webpack-remove-empty-scripts css-loader html-webpack-plugin mini-css-extract-plugin postcss-loader --save-dev
+     ```
+   - ```
+     npm i typescript jquery
+     ```
+
+#### 3b) Using the WebpackTemplate repo config
 
 Update the `webpack.config.cjs` file like so: 
 
@@ -39,7 +65,7 @@ Update the `webpack.config.cjs` file like so:
    /** Name of the folder, in both source and dist output, for the CMS. */
    const CMS_FOLDER = 'cms';
    ```
-2. At the end of the plugin declarations, [line 169](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39#file-webpack-config-cjs-L169), add:
+2. At the end of the plugin declarations, [line 169](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39#file-webpack-config-cjs-L169) (or line 172 after the previous step), add:
    ```
    /** A Webpack plugin to copy existing individual files or entire directories into the build directory.
     * @see https://webpack.js.org/plugins/copy-webpack-plugin/ */
@@ -48,7 +74,7 @@ Update the `webpack.config.cjs` file like so:
    /** Full path of the CMS subfolder. Ignored in module rules, used by {@linkcode CopyWebpackPlugin. @type {string} */
    const CMS_FULL_PATH = path.resolve(__dirname, `${SRC_FOLDER}/${CMS_FOLDER}`);
    ```
-3. In the `plugins` array of your `module.exports` return function, [line 204](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39#file-webpack-config-cjs-L204), append:
+3. In the `plugins` array of your `module.exports` return function, [line 204](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39#file-webpack-config-cjs-L204) (or line 213 after previous steps), append:
    ```
    new CopyWebpackPlugin({
        patterns: [
@@ -60,7 +86,7 @@ Update the `webpack.config.cjs` file like so:
        ],
    }),
    ```
-4. Replace `devServer`, [line 225](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39#file-webpack-config-cjs-L225), with:
+4. Replace `devServer`, [line 225](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39#file-webpack-config-cjs-L225) (or line 243 after the previous steps), with:
    ```
    devServer: {
        static: [
@@ -70,14 +96,14 @@ Update the `webpack.config.cjs` file like so:
        watchFiles: [`${SRC_FOLDER}/${CMS_FOLDER}/**/*`],
    },
    ```
-5. In the CSS loading module, exclude the CMS filepath by adding the following exclusion between the `test` and `use` properties, [line 247](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39#file-webpack-config-cjs-L247):
+5. In the CSS loading module, exclude the CMS filepath by adding the following exclusion between the `test` and `use` properties, [line 247](https://gist.github.com/nickyonge/bb9fe46458c16e1cd560bce505e4af39#file-webpack-config-cjs-L247) (or line 269 after the previous steps):
    ```
    exclude: CMS_FULL_PATH,
    ```
 
-#### 3B) Modifying webpack.config directly
+#### 3c) Modifying webpack.config directly
 
-This assumes you're using a typical webpack.config.js file, such as the [barebones example](example/webpack.config.js) in this repo.
+This assumes you're using a typical webpack.config.js file, such as the [barebones example](example/minimal-webpack-config/webpack.config.js) in this repo.
 
 1. Import the `copy-webpack-plugin` at the top of your config file, alongside where `path` is imported.
    ```
