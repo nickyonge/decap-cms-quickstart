@@ -2,7 +2,7 @@
 Quickly add [Decap CMS](https://decapcms.org/) to a Webpack project
 
 > [!IMPORTANT]
-> This quickstart assumes you have a Webpack site set up and ready to go. If not, the [Webpack Template](https://github.com/nickyonge/webpack-template) could be helpful.
+> This guide assumes you're familiar, at least conceptually. with [Webpack](https://webpack.js.org/). If not, no problem! Webpack is a module bundler. In a nutshell, it handles a project's setup and housekeeping, and lets you get straight to writing functional code. The [Webpack Template](https://github.com/nickyonge/webpack-template) will help!
 
 This guide speedruns steps 1 ([installation](https://decapcms.org/docs/install-decap-cms/)) and 2 ([backend config](https://decapcms.org/docs/choosing-a-backend/)) of Decap's [Basic Steps](https://decapcms.org/docs/basic-steps/) guide.
 
